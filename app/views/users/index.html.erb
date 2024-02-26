@@ -1,0 +1,48 @@
+<h3>ユーザー情報一覧</h3>
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
+      <th>詳細</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.user_id %></td>
+        <td><%= user.title %></td>
+        <td><%= user.startday%></td>
+        <td><%= user.finishday %></td>
+        <td>
+          <% if user.oneday == "true" %>
+          <%= "⚪︎" %>
+          <% else user.oneday == "false" %>
+           <%= ""%>
+           <% end %>
+        </td>
+        <td><%= user.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to"詳細", user%></td>
+        <td><%= link_to"編集", edit_user_path(user)%></td>
+        <td><%= link_to "削除", user, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+      </tr>
+    <% end %>
+    <p><%= link_to "ユーザー新規登録", :new_user%></p>
+  </tbody>
+</table>
+
+<div>
+<p>予定の合計<%= @schedule_total %></p>
+<p> 本日の日付 <%= Time.now.strftime("%Y/%m/%d")%></p>
+</div>
