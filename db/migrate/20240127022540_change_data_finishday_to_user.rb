@@ -3,3 +3,4 @@ class ChangeDataFinishdayToUser < ActiveRecord::Migration[6.1]
     change_column :users, :finishday, :date
   end
 end
+

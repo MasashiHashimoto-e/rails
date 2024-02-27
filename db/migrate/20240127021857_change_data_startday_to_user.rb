@@ -3,3 +3,4 @@ class ChangeDataStartdayToUser < ActiveRecord::Migration[6.1]
     change_column :users, :startday, :date
   end
 end
+
