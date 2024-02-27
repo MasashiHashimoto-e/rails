@@ -4,6 +4,7 @@ class User < ApplicationRecord
     validates :finishday, presence: true
     validates :memo, length: { maximum: 500 }
     validate :start_finish_check
+    
     def start_finish_check
         return false if finishday.blank? || startday.blank?
         if startday > finishday
@@ -11,3 +12,4 @@ class User < ApplicationRecord
         end
     end
 end
+

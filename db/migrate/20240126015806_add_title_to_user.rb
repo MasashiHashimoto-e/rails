@@ -3,3 +3,4 @@ class AddTitleToUser < ActiveRecord::Migration[6.1]
     add_column :users, :memo, :string
   end
 end
+
